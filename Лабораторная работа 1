@@ -1,0 +1,149 @@
+# Найти корни квадратного уравнения ax^2 + bx + c
+# import math
+# print("Квадратное уравнение ax^2 + bx + c = 0")
+# a = int(input("Первый коэффициент равен: "))
+# b = int(input("Второй коэффициент равен: "))
+# c = int(input("Свободный член уравнения равен: "))
+# discr = b ** 2 - 4 * a * c
+# if discr > 0:
+#     x1 = (- b + math.sqrt(discr)) / (2 * a)
+#     x2 = (- b - math.sqrt(discr)) / (2 * a)
+#     print("x1 = " + str(x1), "x2 = " + str((x2)), sep = ", ")
+# elif discr == 0:
+#     x = - b / (2 * a)
+#     print("x = " + str(x))
+# else:
+#     print("Действительных корней уравнения нет")
+
+# # Найти площадь круга
+# from math import pi
+# radius = float(input("Введите радиус круга: "))
+# square = math.pi * (radius ** 2)
+# print("Площадь круга: ", square)
+
+# Вывести элементы массива, которые встречаются только один раз (или два/три/четыре раза), причём в том порядке,
+# в котором они идут в массиве.
+# from collections import Counter
+# array = input("Введите элементы массива: ")
+# num = int(input("Введите число: "))
+# count = []
+# for key, value in Counter(array).items():
+#     if value == num:
+#         count.append(key)
+# print(count)
+
+# Дан массив a из n целых чисел. Напишите программу, которая найдет наибольшее число, которое чаще других
+# встречается в массиве (т.е. если три числа встречаются одинаковое количество раз, нужно найти наибольшее из них).
+# from collections import Counter
+# n = int(input("Количество чисел: "))
+# a = [int(i) for i in input("Введите целые числа: ").split()]
+# counter = Counter(a)
+# result = a[0]
+# max_count = counter[result]
+# for number, count in counter.items():
+#     if count > max_count or (count == max_count and number > result):
+#         result = number
+#         max_count = count
+# print(result)
+
+# Нужно составить таблицу кодовых слов для передачи сообщений, каждому сообщению соответствует своё кодовое слово.
+# В качестве кодовых слов используются пятибуквенные слова, в которых есть только буквы А, Т, О, М, причём буква «М»
+# появляется ровно 1 раз. Каждая из других допустимых букв может встречаться в кодовом слове любое количество раз или
+# не встречаться совсем. Сколько различных кодовых слов можно использовать?
+# import itertools
+# keyword = 0
+# a = list(itertools.product("АТОМ", repeat = 5))
+# for x in a:
+#     if x.count("М") == 1:
+#         keyword += 1
+# print(keyword)
+
+# Ученик составляет шестибуквенные слова путём перестановки букв “НЕБО” (или любого другого слова/набора букв).
+# Сколько различных слов можно составить?
+# import itertools
+# word = input("Введите слово или набор букв: ")
+# a = list(itertools.permutations(word))
+# print(len(set(a)))
+
+# Создайте функцию infinite(lst, tries), которая будет проходиться по элементам списка lst (целые числа) заданное
+# количество раз (tries) циклически. Один раз - один элемент списка. После вывода последнего значения последовательности
+# процедура начнется с самого начала. Например, если в списке 2 элемента, а функция получила значение 3, то сначала
+# выведется первый объект, потом последний, а потом опять первый. Результат работы функции представьте в виде строки,
+# состоящей из tries количества символов.
+# from itertools import cycle
+#
+# def infinite(lst, tries):
+#     res = ''
+#     iter_lst = cycle(lst)
+#     if lst:
+#         for i in range(tries):
+#             res += str(next(iter_lst))
+#     return res
+#
+# print(infinite([4, 2, 5], 6))
+# print(infinite([2, 3], 3))
+# print(infinite([1], 3))
+
+# С помощью json модуля напишите скрипт, который считывает файл JSON, содержащий информацию о книгах (название, авторов,
+# ISBN, количество страниц, статус публикации, тематику и т.д.), и выводит список всех книг, в которых количество
+# страниц больше 500.
+# import json
+#
+# def find_books_by_pages(file_path, pageCount):
+#     with open(file_path, "r") as f:
+#         data = json.load(f)
+#     books = []
+#     for book in data:
+#         if book["pageCount"] > pageCount:
+#             books.append(book["title"])
+#     return books
+#
+# file_path = "books.json"
+# pageCount = 500
+# books = find_books_by_pages(file_path, pageCount)
+# print(*books, sep = '\n')
+
+# Используя модуль csv, напишите скрипт, который читает CSV-файл, выполняет вычисления с данными и выводит результаты
+# в новый CSV-файл.
+# import csv
+#
+# def calculate_avg_income(file_path):
+#     with open(file_path, 'r') as f:
+#         reader = csv.DictReader(f)
+#
+# file_path = 'income_data.csv'
+# avg_income = calculate_avg_income(file_path)
+# print(avg_income)
+
+
+# Файл freshman_kgs.csv - создать столбец Weight diff, который будет отражать изменение веса с сентября по апрель.
+# Вывести только те строки, в которых представлены респонденты мужского пола, чья разница в весе неотрицательна, а ИМТ
+# в апреле больше двадцати.
+# import csv
+#
+# def weight_changes(file_path, weight):
+#     with open(file_path, 'w', newline='') as f:
+#         data = csv.DictWriter(f, line=Weight_diff)
+#         data.writeheader()
+#         for weight_change in freshman_kgs:
+#             writer.writerow(weight_change)
+#             if 'Weight(Sep)' > 'Weight (Apr)':
+#                 Weight_diff = 'Weight(Sep)' - 'Weight(Apr)'
+#             else:
+#                 Weight_diff = 'Weight(Apr)' - 'Weight(Sep)'
+#          return Weight_diff
+#
+# def search_for_respondents(file_path, respondents):
+#     respondents = []
+#     for respondent in data:
+#         if "Sex" == "M" and "Weight_diff" > 0 and "BMI(Apr)" > 20:
+#             respondents.append(respondent)
+#     return respondents
+#
+# file_path = 'freshman_kgs.csv'
+# print(*respondents, sep = '\n')
+
+# Файл homes.csv, где представлена статистика по продаже домов. Столбцы: цена продажи и запрашиваемая цена
+# (в тыс.долларов), жилая площадь, количество комнат, ванных комнат, возраст дома, количество акров на участке, налог
+# (в долларах). Нужно рассчитать среднюю итоговую стоимость дома с восемью комнатами, а также создать новый столбец,
+# в котором были бы только дома со стоимостью более 180 и налогом менее 3500.
